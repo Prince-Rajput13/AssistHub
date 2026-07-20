@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "concurrently": "^10.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^16.6.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.22.0"
+  },
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Assisthub",
+  "main": "Server/index.js",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "scripts": {
+    "start": "node Server/index.js",
+    "dev": "nodemon Server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prince-Rajput13/AssistHub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Prince-Rajput13/AssistHub/issues"
+  },
+  "homepage": "https://github.com/Prince-Rajput13/AssistHub#readme"
+}
