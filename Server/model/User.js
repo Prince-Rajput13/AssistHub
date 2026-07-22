@@ -1,4 +1,4 @@
-const pool = require('../config/database');
+const { pool } = require('../config/database');
 
 async function createUser({ name, email, passwordHash }) {
   const result = await pool.query(

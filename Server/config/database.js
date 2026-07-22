@@ -9,10 +9,6 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD,
 });
 
-pool.query('SELECT 1').catch((err) => {
-  console.error('Unable to connect to Postgres:', err.message);
-});
-
 pool.on('connect', () => {
   console.log('Connected to Postgres');
 });
@@ -22,4 +18,18 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
-module.exports = pool;
+async function initializeDatabase() {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS users (
+      id BIGSERIAL PRIMARY KEY,
+      name VARCHAR(100) NOT NULL,
+      email VARCHAR(255) NOT NULL UNIQUE,
+      password_hash TEXT NOT NULL,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  console.log('Database schema is ready');
+}
+
+module.exports = { pool, initializeDatabase };
