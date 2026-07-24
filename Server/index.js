@@ -3,6 +3,8 @@ const cors = require('cors');
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoute');
+const orgRoutes = require("./routes/orgRoute");
+
 const { initializeDatabase } = require('./config/database');
 const app = express();
 
@@ -15,6 +17,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/orgs', orgRoutes);
 
 app.get('/api/health', (_req, res) => {
   res.status(200).json({ status: 'ok' });
